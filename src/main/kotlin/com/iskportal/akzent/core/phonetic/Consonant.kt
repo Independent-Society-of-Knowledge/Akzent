@@ -1,44 +1,26 @@
 package com.iskportal.akzent.core.phonetic
 
+import com.iskportal.akzent.core.phonetic.utils.plus
 
-enum class ArticulationPlace {
-    Bilabial,
-    LabioDental,
-    LinguoLabial,
-    Dental,
-    Alveolar,
-    PostAlveolar,
-    RetroFlex,
-    Palatal,
-    Velar,
-    Uvular,
-    PharyngealEpiglottal,
-    Glottal,
-}
+data class Consonant(
+    override val name: String = "",
+    override val symbol: String = "",
+    val form: Pair<ArticulationPlace, ArticulationManner> = ArticulationPlace.None + ArticulationManner.None,
+) : Phonetic {
+    fun getName(): String {
+        return name
+    }
 
-enum class ArticulationManner    {
-    Nasal,
-    Plosive,
-    SibilantFricative,
-    NonSibilantFricative,
-    Fricative,
-    Tenuis,
-    Voiced,
-    VoicedLateral,
-    NasalLateral,
-    Approximant,
-    TapFlap,
-    Trill,
-    LateralFricative,
-    LateralApproximant,
-    LateralTapFlap
-}
+    fun getSymbol(): String {
+        return symbol
+    }
 
-operator fun ArticulationPlace.plus(other: ArticulationManner): Pair<ArticulationPlace, ArticulationManner>{
-    return  this to other
-}
-operator fun ArticulationManner.plus(other: ArticulationPlace): Pair<ArticulationPlace, ArticulationManner>{
-    return other to this
-}
+    fun getForm(): Pair<ArticulationPlace, ArticulationManner> {
+        return form
+    }
 
-typealias Consonant = Pair<ArticulationPlace, ArticulationManner>
+    // Vowel Generation
+    fun Pair<ArticulationPlace, ArticulationManner>.defineAsConsonant(name: String = "", symbol: String = ""): Consonant {
+        return Consonant(name, symbol, this@defineAsConsonant)
+    }
+}
