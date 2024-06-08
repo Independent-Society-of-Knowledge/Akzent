@@ -2,10 +2,11 @@ package com.iskportal.akzent.core.phonetic
 
 
 data class Utterance(
-    val value: List<Phonetic>
+    val phoneticValue: Sequence<Phonetic>,
+    val writtenValue: String,
     ){
-    fun List<Phonetic>.toUtterance(): Utterance {
-        return Utterance(this)
+    fun Pair<Collection<Phonetic>, String>.toUtterance(): Utterance {
+        return Utterance(this.first.asSequence(), this.second)
     }
 }
 
