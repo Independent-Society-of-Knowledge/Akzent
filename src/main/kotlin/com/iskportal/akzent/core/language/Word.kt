@@ -1,6 +1,5 @@
 package com.iskportal.akzent.core.language
 
-import com.iskportal.akzent.core.language.utils.Correlation
 import com.iskportal.akzent.core.language.utils.WordCorrelation
 import com.iskportal.akzent.core.phonetic.Utterance
 
