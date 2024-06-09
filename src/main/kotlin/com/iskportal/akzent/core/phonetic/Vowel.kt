@@ -2,7 +2,7 @@ package com.iskportal.akzent.core.phonetic
 
 import com.iskportal.akzent.core.phonetic.utils.plus
 
-class Vowel(
+data class Vowel(
     override val name: String = "",
     override val symbol: String = "",
     private val form: Pair<MouthType, LipType> = MouthType.None + LipType.None,
@@ -23,6 +23,10 @@ class Vowel(
     // Vowel Generation
     fun Pair<MouthType, LipType>.defineAsVowel(name: String = "", symbol: String = ""): Vowel {
         return Vowel(name, symbol, this@defineAsVowel)
+    }
+
+    override fun toString(): String {
+        return "Vowel(name='$name', symbol='$symbol', form=$form)"
     }
 }
 
