@@ -23,4 +23,10 @@ data class Consonant(
     fun Pair<ArticulationPlace, ArticulationManner>.defineAsConsonant(name: String = "", symbol: String = ""): Consonant {
         return Consonant(name, symbol, this@defineAsConsonant)
     }
+
+    override fun toString(): String {
+        return "Consonant(name='$name', symbol='$symbol', form=$form)"
+    }
+
+
 }
