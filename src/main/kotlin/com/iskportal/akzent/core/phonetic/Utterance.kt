@@ -8,5 +8,10 @@ data class Utterance(
     fun Pair<Collection<Phonetic>, String>.toUtterance(): Utterance {
         return Utterance(this.first.asSequence(), this.second)
     }
+
+    operator fun Utterance.plus(other: Utterance): Utterance {
+        return Utterance(phoneticValue.plus(other.phoneticValue), writtenValue.plus(other.writtenValue))
+    }
+
 }
 
